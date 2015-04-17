@@ -3,5 +3,5 @@ export DEBEMAIL="like-all@yandex.com"
 
 NAME="kurz"
 VERSION="0.1"
-SUFFIX="4"
+SUFFIX="5"
 FLAVOURS="jessie,trusty,precise,wheezy"

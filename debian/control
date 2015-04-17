@@ -2,10 +2,10 @@ Source: kurz
 Section: misc
 Priority: optional
 Maintainer: Azer Abdullaev (Like All) <like-all@yandex.com>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9), golang
 Standards-Version: 3.9.5
 
 Package: kurz
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, socat
 Description: universal xmpp bot
