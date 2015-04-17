@@ -1,0 +1,11 @@
+Source: kurz
+Section: misc
+Priority: optional
+Maintainer: Azer Abdullaev (Like All) <like-all@yandex.com>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.5
+
+Package: kurz
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: universal xmpp bot
