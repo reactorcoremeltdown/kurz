@@ -25,6 +25,8 @@ type Config struct {
     Logging bool
     LogDirectory string
     AcceptSubscriptionRequests bool
+    WhitelistEnabled bool
+    Whitelist []string
     Chatrooms []Chatroom
 }
 

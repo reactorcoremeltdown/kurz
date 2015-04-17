@@ -21,6 +21,16 @@ func serverName(host string) string {
     return strings.Split(host, ":")[0]
 }
 
+func jidInWhitelist(jid string, whitelist []string) bool {
+    present := false
+    for _, item := range whitelist {
+        if jid == item {
+            present = true
+        }
+    }
+    return present
+}
+
 func main() {
     goopt.Description = func() string {
         return "Kurz - universal xmpp bot"
@@ -106,10 +116,12 @@ func main() {
                             }
                             file.Close()
                         }
-                        cmd := exec.Command(CfgParams.Script, from[0], v.Type, v.Text)
-                        err := cmd.Start()
-                        if err != nil {
-                            log.Fatalf("Error at: %s\n", err.Error())
+                        if !CfgParams.WhitelistEnabled || jidInWhitelist(from[0], CfgParams.Whitelist) {
+                            cmd := exec.Command(CfgParams.Script, from[0], v.Type, v.Text)
+                            err := cmd.Start()
+                            if err != nil {
+                                log.Fatalf("Error at: %s\n", err.Error())
+                            }
                         }
                     }
                 case xmpp.Presence:

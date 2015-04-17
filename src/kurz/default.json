@@ -10,6 +10,8 @@
     "logging": true,
     "logDirectory": "/tmp/kurz/logs/",
     "acceptSubscriptionRequests": true,
+    "whitelistEnabled": false,
+    "whitelist": [],
     "chatrooms": [
         {
             "jid": "kurz@conference.it-the-drote.tk",
