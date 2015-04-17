@@ -1,0 +1,2 @@
+# kurz
+universal xmpp bot
