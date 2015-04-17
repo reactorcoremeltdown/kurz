@@ -177,5 +177,17 @@ func main() {
         msg := <-msgbus
         msgparts := strings.Split(msg, "∙")
         talk.Send(xmpp.Chat{Remote: msgparts[0], Type: msgparts[1], Text: msgparts[2]})
+        if CfgParams.Logging {
+            logFilename := CfgParams.LogDirectory + "/" + msgparts[0] + ".log"
+            file, err := os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+            if err != nil {
+                log.Fatalf("Error at: %s\n", err.Error())
+            }
+            _, err = file.WriteString("[" + time.Now().Format("2006-01-02T15:04:05-07:00") + "] <" + CfgParams.Jid + "> " + msgparts[2] + "\n")
+            if err != nil {
+                log.Fatalf("Error at: %s\n", err.Error())
+            }
+            file.Close()
+        }
     }
 }
