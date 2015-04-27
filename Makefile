@@ -38,5 +38,6 @@ install:
 	mkdir -p $(CONFDIR)
 	$(INSTALL_BIN) src/kurz/kurz $(BINDIR)/
 	$(INSTALL_BIN) src/kurz/kurz_echo.sh $(BINDIR)/
-	$(INSTALL_LIB) src/kurz/socket_send.sh $(LIBDIR)/
+	$(INSTALL_LIB) src/lib/socket_send.sh $(LIBDIR)/
+	$(INSTALL_LIB) src/lib/socket_send.js $(LIBDIR)/
 	$(INSTALL_CONF) src/kurz/default.json $(CONFDIR)/
