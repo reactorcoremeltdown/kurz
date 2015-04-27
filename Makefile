@@ -37,6 +37,7 @@ install:
 	mkdir -p $(BINDIR)
 	mkdir -p $(LIBDIR)
 	mkdir -p $(CONFDIR)
+	mkdir -p $(SYSTEMDCONFDIR)
 	$(INSTALL_BIN) src/kurz/kurz $(BINDIR)/
 	$(INSTALL_BIN) src/kurz/kurz_echo.sh $(BINDIR)/
 	$(INSTALL_LIB) src/lib/socket_send.sh $(LIBDIR)/
