@@ -1,0 +1,4 @@
+#!/bin/sh
+
+systemctl stop kurz.target
+systemctl disable /lib/systemd/system/kurz.target

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+systemctl enable /lib/systemd/system/kurz.target
+systemctl start kurz.target

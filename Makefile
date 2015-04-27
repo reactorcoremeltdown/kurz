@@ -12,6 +12,7 @@ INSTALL_LIB=$(INSTALL) -m644
 INSTALL_CONF=$(INSTALL) -m400
 
 PREFIX?=$(DESTDIR)/usr
+SYSTEMDCONFDIR?=$(DESTDIR)/lib/systemd/system
 BINDIR?=$(PREFIX)/bin
 LIBDIR?=$(PREFIX)/lib/kurz
 CONFDIR?=$(DESTDIR)/etc/kurz/
@@ -41,3 +42,4 @@ install:
 	$(INSTALL_LIB) src/lib/socket_send.sh $(LIBDIR)/
 	$(INSTALL_LIB) src/lib/socket_send.js $(LIBDIR)/
 	$(INSTALL_CONF) src/kurz/default.json $(CONFDIR)/
+	$(INSTALL_CONF) src/init/kurz.target $(SYSTEMDCONFDIR)/
