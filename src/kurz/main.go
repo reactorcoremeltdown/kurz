@@ -116,7 +116,7 @@ func main() {
                             }
                             file.Close()
                         }
-                        if !CfgParams.WhitelistEnabled || jidInWhitelist(from[0], CfgParams.Whitelist) {
+                        if !CfgParams.WhitelistEnabled || jidInWhitelist(from[0], CfgParams.Whitelist) && v.Text != "" {
                             cmd := exec.Command(CfgParams.Script, from[0], v.Type, v.Text)
                             err := cmd.Start()
                             if err != nil {
