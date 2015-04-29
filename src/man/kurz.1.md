@@ -72,7 +72,7 @@ There are some inter-process communication libraries which already ship with kur
 
 ```
 source /usr/lib/kurz/socket_send.sh
-socket_send username@example.org chat "Hello, buddy" /tmp/example.socket
+socket_send "username@example.org" "chat" "Hello, buddy" "/tmp/example.socket"
 ```
 
 **node.js**
