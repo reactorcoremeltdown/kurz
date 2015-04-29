@@ -178,7 +178,7 @@ func main() {
         msgparts := strings.Split(msg, "∙")
         talk.Send(xmpp.Chat{Remote: msgparts[0], Type: msgparts[1], Text: msgparts[2]})
         if CfgParams.Logging {
-            logFilename := CfgParams.LogDirectory + "/" + msgparts[0] + ".log"
+            logFilename := CfgParams.LogDirectory + "/" + strings.Split(msgparts[0], "/")[0] + ".log"
             file, err := os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
             if err != nil {
                 log.Fatalf("Error at: %s\n", err.Error())
