@@ -2,6 +2,7 @@ kurz (0.1-2) UNRELEASED; urgency=medium
 
   * Build using Travis CI
   * Replace md2man with Ruby-ronn
+  * Add git to build dependencies
 
  -- Azer Abdullaev (Like All) <like-all@yandex.com>  Tue, 12 Jul 2016 17:41:01 +0300
 
