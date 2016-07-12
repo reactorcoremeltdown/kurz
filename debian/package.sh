@@ -1,7 +1,7 @@
-export DEBFULLNAME="Azer Abdullaev (Like All)"
-export DEBEMAIL="like-all@yandex.com"
-
-NAME="kurz"
-VERSION="0.3"
-SUFFIX="3"
-FLAVOURS="jessie,trusty"
+NAME="leicht"
+PRODUCTION_FLAVOURS="jessie
+trusty
+xenial"
+PRODUCTION_ARCHITECTURES="any"
+TESTING_FLAVOURS="jessie"
+TESTING_ARCHITECTURES="amd64"
