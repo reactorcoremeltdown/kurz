@@ -11,7 +11,7 @@ import (
     "strings"
     "time"
     "net"
-    "github.com/Like-all/go-xmpp"
+    "github.com/mattn/go-xmpp"
     goopt "github.com/droundy/goopt"
 )
 
