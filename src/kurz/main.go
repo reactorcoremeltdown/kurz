@@ -2,6 +2,7 @@ package main
 
 import (
   "crypto/tls"
+  "encoding/json"
   "fmt"
   "os"
   "log"
@@ -172,9 +173,31 @@ func main() {
   for {
     msg := <-msgbus
     msgparts := strings.Split(msg, "∙")
-    talk.Send(xmpp.Chat{Remote: msgparts[0], Type: msgparts[1], Text: msgparts[2]})
-    if CfgParams.Logging {
-        writeMessageToLog(strings.Split(msgparts[0], "/")[0], CfgParams.LogDirectory, CfgParams.Jid, msgparts[2])
+    var action map[string]*json.RawMessage
+    data := []byte(msg)
+    err := json.Unmarshal(data, &action)
+    if err != nil {
+      log.Printf("Could not unmarshal incoming JSON: %s\n", err.Error())
+    } else {
+      var actionType string
+      err = json.Unmarshal(*action["actionType"], &actionType)
+      if err != nil {
+        log.Printf("Could not detect action type: %s\n", err.Error())
+      } else {
+        switch actionType {
+        case "SendMessage":
+          var actionSettings xmpp.Chat
+          err = json.Unmarshal(*action["actionSettings"], &actionSettings)
+          if err != nil {
+            log.Printf("Could not get action settings: %s\n", err.Error())
+          } else {
+            talk.Send(actionSettings)
+            if CfgParams.Logging {
+              writeMessageToLog(strings.Split(msgparts[0], "/")[0], CfgParams.LogDirectory, CfgParams.Jid, msgparts[2])
+            }
+          }
+        }
+      }
     }
   }
 }
