@@ -3,6 +3,8 @@ kurz (0.2-4) UNRELEASED; urgency=medium
   * Fixed indentation
   * Upgraded kurz from receiving string to handling actions unmarshalled from
     incoming JSON structure
+  * Updated kurz libraries (socket_send libs are deprecated from now and will
+    be removed in 3.x)
 
  -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 08:44:21 -0800
 

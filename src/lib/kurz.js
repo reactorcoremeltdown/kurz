@@ -1,4 +1,4 @@
-exports.socketSend = function(chat_jid, chat_type, message_text, kurz_socket) {
+exports.sendMessage = function(chat_jid, chat_type, message_text, kurz_socket) {
 	var net = require('net');
 	var action = {
 		actionType: "SendMessage",

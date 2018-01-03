@@ -1,4 +1,4 @@
-function socket_send() {
+function kurz_send_message() {
   chat_jid=$1
   chat_type=$2
   message_text=$3
