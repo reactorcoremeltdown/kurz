@@ -1,8 +1,14 @@
-kurz (0.2-3) UNRELEASED; urgency=medium
+kurz (0.2-4) UNRELEASED; urgency=medium
+
+  * Fixed indentation
+
+ -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 08:44:21 -0800
+
+kurz (0.2-3) unstable; urgency=medium
 
   * Updated logging function
 
- -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 08:26:44 -0800
+ -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 08:44:16 -0800
 
 kurz (0.2-2) unstable; urgency=medium
 
