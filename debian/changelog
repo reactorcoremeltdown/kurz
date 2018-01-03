@@ -1,8 +1,14 @@
-kurz (0.2-1) UNRELEASED; urgency=medium
+kurz (0.2-2) UNRELEASED; urgency=medium
+
+  * Replaced JoinMUC function with JoinMUCNoHistory
+
+ -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 01:49:47 -0800
+
+kurz (0.2-1) unstable; urgency=medium
 
   * First build for Debian Stretch
 
- -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 01:32:44 -0800
+ -- Azer Abdullaev (Like All) <like-all@yandex.com>  Wed, 03 Jan 2018 01:49:45 -0800
 
 kurz (0.1-3) unstable; urgency=medium
 

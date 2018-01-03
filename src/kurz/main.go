@@ -71,7 +71,7 @@ func main() {
     }
 
     for _, chatroom :=range CfgParams.Chatrooms {
-        talk.JoinMUC(chatroom.Jid, chatroom.Nick)
+        talk.JoinMUCNoHistory(chatroom.Jid, chatroom.Nick)
     }
 
     go func() {
