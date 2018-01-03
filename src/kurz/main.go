@@ -31,6 +31,20 @@ func jidInWhitelist(jid string, whitelist []string) bool {
     return present
 }
 
+func writeMessageToLog(chatName, logDirectory, botUsername, messageText string)  {
+  logFilename := logDirectory + "/" + chatName + ".log"
+
+  file, err := os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
+  if err != nil {
+    log.Printf("Could not open log file: %s\n", err.Error())
+  }
+  _, err = file.WriteString("[" + time.Now().Format("2006-01-02T15:04:05-07:00") + "] <" + botUsername + "> " + messageText + "\n")
+  if err != nil {
+    log.Printf("Could not write log file entry: %s\n", err.Error())
+  }
+  file.Close()
+}
+
 func main() {
     goopt.Description = func() string {
         return "Kurz - universal xmpp bot"
@@ -91,30 +105,12 @@ func main() {
                             nick = from[0]
                         }
                         if CfgParams.Logging {
-                            logFilename := CfgParams.LogDirectory + "/" + from[0] + ".log"
-                            file, err := os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
-                            if err != nil {
-                                log.Fatalf("Error at: %s\n", err.Error())
-                            }
-                            _, err = file.WriteString("[" + time.Now().Format("2006-01-02T15:04:05-07:00") + "] <" + nick + "> " + v.Text + "\n")
-                            if err != nil {
-                                log.Fatalf("Error at: %s\n", err.Error())
-                            }
-                            file.Close()
+                            writeMessageToLog(from[0], CfgParams.LogDirectory, nick, v.Text)
                         }
                     } else {
                         from := strings.Split(v.Remote, "/")
                         if CfgParams.Logging {
-                            logFilename := CfgParams.LogDirectory + "/" + from[0] + ".log"
-                            file, err := os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
-                            if err != nil {
-                                log.Fatalf("Error at: %s\n", err.Error())
-                            }
-                            _, err = file.WriteString("[" + time.Now().Format("2006-01-02T15:04:05-07:00") + "] <" + from[0] + "> " + v.Text + "\n")
-                            if err != nil {
-                                log.Fatalf("Error at: %s\n", err.Error())
-                            }
-                            file.Close()
+                            writeMessageToLog(from[0], CfgParams.LogDirectory, from[0], v.Text)
                         }
                         if !CfgParams.WhitelistEnabled || jidInWhitelist(from[0], CfgParams.Whitelist) && v.Text != "" {
                             cmd := exec.Command(CfgParams.Script, v.Remote, v.Type, v.Text)
@@ -178,16 +174,7 @@ func main() {
         msgparts := strings.Split(msg, "∙")
         talk.Send(xmpp.Chat{Remote: msgparts[0], Type: msgparts[1], Text: msgparts[2]})
         if CfgParams.Logging {
-            logFilename := CfgParams.LogDirectory + "/" + strings.Split(msgparts[0], "/")[0] + ".log"
-            file, err := os.OpenFile(logFilename, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0644)
-            if err != nil {
-                log.Fatalf("Error at: %s\n", err.Error())
-            }
-            _, err = file.WriteString("[" + time.Now().Format("2006-01-02T15:04:05-07:00") + "] <" + CfgParams.Jid + "> " + msgparts[2] + "\n")
-            if err != nil {
-                log.Fatalf("Error at: %s\n", err.Error())
-            }
-            file.Close()
+            writeMessageToLog(strings.Split(msgparts[0], "/")[0], CfgParams.LogDirectory, CfgParams.Jid, msgparts[2])
         }
     }
 }
