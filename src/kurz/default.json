@@ -1,25 +1,19 @@
 {
-    "jid": "testxmpp2@it-the-drote.tk",
-    "server": "it-the-drote.tk:5222",
-    "password": "******",
+    "jid": "bot@tiredsysadmin.cc",
+    "server": "tiredsysadmin.cc:5222",
+    "password": "**********",
     "status": "Kurz",
     "socket": "/tmp/kurz.socket",
-    "script": "/usr/bin/kurz_echo.sh",
+    "script": "/usr/bin/true",
     "notls": true,
     "debug": true,
     "logging": true,
-    "logDirectory": "/tmp/kurz/logs/",
+    "logDirectory": "/tmp",
     "acceptSubscriptionRequests": true,
     "whitelistEnabled": false,
-    "whitelist": [],
+    "whitelist": [
+        "rcmd@tiredsysadmin.cc"
+    ],
     "chatrooms": [
-        {
-            "jid": "kurz@conference.it-the-drote.tk",
-            "nick": "Kurz-dev"
-        },
-        {
-            "jid": "kurz-talks@conference.it-the-drote.tk",
-            "nick": "Kurz-talks"
-        }
     ]
 }
